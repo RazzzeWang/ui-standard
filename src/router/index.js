@@ -5,6 +5,7 @@
  */
 import Vue from "vue";
 import VueRouter from "vue-router";
+import defaultSettings from "@/config/defaultSettings";
 import { constantRouter } from "./router.config";
 
 // hack router push callback
@@ -20,7 +21,7 @@ Vue.use(VueRouter);
 const routes = constantRouter;
 
 const router = new VueRouter({
-  mode: "history",
+  mode: defaultSettings.routerMode,
   base: process.env.BASE_URL,
   routes,
 });

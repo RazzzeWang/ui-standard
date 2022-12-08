@@ -1,17 +1,15 @@
 <!--
  * @Author: ze.wang@diact.com
- * @Date: 2022-12-07 11:17:42
- * @Function: 空白layout 不包含菜单头部等
+ * @Date: 2022-12-08 16:52:50
+ * @Function: Please Input Function
 -->
 <template>
-  <div class="frame-wrapper">
-    <router-view />
-  </div>
+  <div>ThemePreview</div>
 </template>
 
 <script>
 export default {
-  name: "BlankLayout",
+  name: "ThemePreview",
   components: {},
   props: {},
   data() {
@@ -33,9 +31,4 @@ export default {
   methods: {},
 };
 </script>
-<style lang="scss" scoped>
-.frame-wrapper {
-  width: 100%;
-  height: 100%;
-}
-</style>
+<style lang="" scoped></style>

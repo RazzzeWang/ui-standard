@@ -8,7 +8,6 @@ import { rootRouter } from "./router.config.js";
 const notFoundRouter = {
   path: "*",
   redirect: "/404",
-  hidden: true,
 };
 /**
  * 动态生成菜单、路由

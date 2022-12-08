@@ -20,7 +20,7 @@ export default function (ROOT_PATH = "") {
           name: "GeneralColors",
           component: () =>
             import(
-              /* webpackChunkName: "generalColors" */ "@/views/general/Colors"
+              /* webpackChunkName: "generalColors" */ "@/views/components/general/Colors"
             ),
           meta: genMeta({ title: "颜色", permission: ["general"] }),
         },

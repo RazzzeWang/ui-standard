@@ -9,9 +9,13 @@
       <basic-header />
     </el-header>
     <el-container class="frame-container">
-      <el-aside class="frame-aside" width="200px">
+      <el-aside
+        class="frame-aside"
+        width="200px"
+        v-if="menus && menus.length > 0"
+      >
         <el-menu
-          default-active="1-4-1"
+          :default-active="defaultActiveMenu"
           class="frame-menu"
           @open="handleOpen"
           @close="handleClose"
@@ -35,6 +39,8 @@
 import MenuItem from "./components/MenuItem";
 import BasicHeader from "./components/BasicHeader";
 import { mapGetters } from "vuex";
+import commonUtil from "@/utils/commonUtil";
+import urlUtil from "@/utils/urlUtil";
 export default {
   name: "BasicLayout",
   components: {
@@ -45,14 +51,37 @@ export default {
   data() {
     return {
       isCollapse: false,
+      defaultActiveMenu: "",
     };
   },
   computed: {
     ...mapGetters({
       menus: "menus",
+      userRouters: "userRouters",
     }),
   },
-  watch: {},
+  watch: {
+    $route: {
+      handler: function (nv, ov) {
+        if (nv !== ov) {
+          commonUtil.treeMap(
+            this.userRouters,
+            (routerItem) => {
+              if (urlUtil.path() === routerItem.path) {
+                if (routerItem.meta.menuType === "menu") {
+                  this.defaultActiveMenu = routerItem.name;
+                } else if (routerItem.meta.menuType === "page") {
+                  this.defaultActiveMenu = routerItem.meta.mainMenuName;
+                }
+              }
+            },
+            "children"
+          );
+        }
+      },
+      immediate: true,
+    },
+  },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
@@ -73,6 +102,9 @@ export default {
     handleClose() {
       console.log("收起");
     },
+
+    // 初始化
+    initDefaultActiveKey() {},
   },
 };
 </script>

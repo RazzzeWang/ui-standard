@@ -4,6 +4,7 @@
  * @Function: Please Input Function
  */
 import { generatorDynamicRouter } from "@/router/generatorRouters";
+import urlUtil from "@/utils/urlUtil";
 
 const permission = {
   namespaced: true,
@@ -22,8 +23,15 @@ const permission = {
     },
     SET_HEADER_MENUS: (state, headerMenus) => {
       state.headerMenus = headerMenus;
-      state.currentHeaderMenu =
-        headerMenus.length > 0 ? headerMenus[0].name : null;
+      if (headerMenus.length > 0) {
+        for (let i = 0; i < headerMenus.length; i++) {
+          if (urlUtil.path().indexOf(headerMenus[i].path + "/") > -1) {
+            state.currentHeaderMenu = headerMenus[i].name;
+          }
+        }
+      } else {
+        state.currentHeaderMenu = null;
+      }
     },
     SET_CURRENT_HEADER_MENU: (state, currentHeaderMenu) => {
       state.currentHeaderMenu = currentHeaderMenu;

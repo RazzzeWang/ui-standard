@@ -11,6 +11,7 @@
  * @param {Boolean} keepAlive 是否保持缓存
  * @param {String} menuType 类型是头部菜单、菜单还是普通页面 'headMenu' | 'menu' | 'page'
  * @param {Boolean} isShow 是否显示
+ * @param {String} mainMenuName 非menu页面时对应菜单页面的name
  * @returns
  */
 export default function ({
@@ -20,6 +21,7 @@ export default function ({
   keepAlive = false,
   menuType = "menu",
   isShow = true,
+  mainMenuName,
 } = {}) {
   return {
     title,
@@ -28,5 +30,6 @@ export default function ({
     keepAlive,
     menuType,
     isShow,
+    mainMenuName,
   };
 }

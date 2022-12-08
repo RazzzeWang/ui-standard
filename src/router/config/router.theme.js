@@ -10,13 +10,11 @@ import genMeta from "../genMeta";
 export default function (ROOT_PATH = "") {
   return [
     {
-      path: `${ROOT_PATH}/result/success`,
-      name: "ResultSuccess",
+      path: `${ROOT_PATH}/preview`,
+      name: "ThemePreview",
       component: () =>
-        import(
-          /* webpackChunkName: "resultSuccess" */ "@/views/result/Success"
-        ),
-      meta: genMeta({ title: "成功", permission: ["result"] }),
+        import(/* webpackChunkName: "themePreview" */ "@/views/theme/Preview"),
+      meta: genMeta({ title: "预览", permission: ["theme"], isShow: false }),
     },
   ];
 }

@@ -9,13 +9,16 @@ import { RouteView, BasicLayout, BlankLayout } from "@/layouts";
 import genMeta from "./genMeta";
 import defaultRouter from "./config/router.default";
 import componentsRouter from "./config/router.components";
+import themeRouter from "./config/router.theme";
 
 // 固定路由
 export const constantRouter = [
   {
     path: "/404",
     component: () =>
-      import(/* webpackChunkName: "fail" */ "@/views/exception/404"),
+      import(
+        /* webpackChunkName: "fail" */ "@/views/default/exception/404.vue"
+      ),
   },
 ];
 
@@ -23,6 +26,8 @@ export const constantRouter = [
 const defaultRouterList = defaultRouter("/default");
 // 组件的路由表
 const componentsRouterList = componentsRouter("/components");
+// 主题的路由表
+const themeRouterList = themeRouter("/theme");
 
 // 根级路由
 export const rootRouter = [
@@ -46,10 +51,9 @@ export const rootRouter = [
   {
     path: "/theme",
     name: "theme",
-    component: BlankLayout,
+    component: BasicLayout,
     meta: genMeta({ title: "主题", menuType: "headMenu" }),
-    redirect:
-      componentsRouterList.length > 0 ? componentsRouterList[0].path : "/404",
-    children: componentsRouterList,
+    redirect: themeRouterList.length > 0 ? themeRouterList[0].path : "/404",
+    children: themeRouterList,
   },
 ];

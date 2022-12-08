@@ -22,7 +22,7 @@ export default function (ROOT_PATH = "") {
           name: "ResultSuccess",
           component: () =>
             import(
-              /* webpackChunkName: "resultSuccess" */ "@/views/result/Success"
+              /* webpackChunkName: "resultSuccess" */ "@/views/default/result/Success"
             ),
           meta: genMeta({ title: "成功", permission: ["result"] }),
         },
@@ -31,7 +31,7 @@ export default function (ROOT_PATH = "") {
           name: "ResultFail",
           component: () =>
             import(
-              /* webpackChunkName: "resultError" */ "@/views/result/Error"
+              /* webpackChunkName: "resultError" */ "@/views/default/result/Error"
             ),
           meta: genMeta({ title: "失败", permission: ["result"] }),
         },
@@ -51,7 +51,7 @@ export default function (ROOT_PATH = "") {
           name: "Exception403",
           component: () =>
             import(
-              /* webpackChunkName: "exception403" */ "@/views/exception/403"
+              /* webpackChunkName: "exception403" */ "@/views/default/exception/403"
             ),
           meta: genMeta({ title: "403", permission: ["exception"] }),
         },
@@ -60,7 +60,7 @@ export default function (ROOT_PATH = "") {
           name: "Exception404",
           component: () =>
             import(
-              /* webpackChunkName: "exception404" */ "@/views/exception/404"
+              /* webpackChunkName: "exception404" */ "@/views/default/exception/404"
             ),
           meta: genMeta({ title: "404", permission: ["exception"] }),
         },
@@ -69,7 +69,7 @@ export default function (ROOT_PATH = "") {
           name: "Exception500",
           component: () =>
             import(
-              /* webpackChunkName: "exception500" */ "@/views/exception/500"
+              /* webpackChunkName: "exception500" */ "@/views/default/exception/500"
             ),
           meta: genMeta({ title: "500", permission: ["exception"] }),
         },
