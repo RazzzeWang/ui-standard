@@ -1,0 +1,6 @@
+/* 改变主题色变量 */
+$--color-primary: #5B69FF;
+
+:export {
+  primaryColor: $--color-primary
+}
