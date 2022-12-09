@@ -8,5 +8,7 @@
  * routerMode - 路由模式，'history' | 'hash'
  */
 export default {
+  lang: "zh-CN",
   routerMode: "history",
+  elementUIVersion: "2.15.6",
 };

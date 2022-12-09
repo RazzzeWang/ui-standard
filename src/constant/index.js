@@ -1,0 +1,13 @@
+/*
+ * @Author: ze.wang@diact.com
+ * @Date: 2022-12-09 15:02:52
+ * @Function: Please Input Function
+ */
+
+export const THEME_USER_CONFIG = "THEME_USER_CONFIG";
+export const THEME_PREVIEW_CONFIG = "THEME_PREVIEW_CONFIG";
+
+export const ACTION_COMPONECT_SELECT = "THEME_ACTION_COMPONECT_SELECT";
+export const ACTION_APPLY_THEME = "THEME_ACTION_ALLPY_CSS";
+export const ACTION_DOWNLOAD_THEME = "THEME_ACTION_DOWNLOAD";
+export const ACTION_USER_CONFIG_UPDATE = "THEME_USER_CONFIG_UPDATE";

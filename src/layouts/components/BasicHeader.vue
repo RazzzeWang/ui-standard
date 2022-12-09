@@ -25,20 +25,18 @@
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
-import { primaryColor } from "@/assets/themeConfig/variables.module.scss";
 export default {
   name: "BasicHeader",
   components: {},
   props: {},
   data() {
-    return {
-      primaryColor: primaryColor,
-    };
+    return {};
   },
   computed: {
     ...mapGetters({
       currentHeaderMenu: "currentHeaderMenu",
       headerMenus: "headerMenus",
+      primaryColor: "primaryColor",
     }),
   },
   watch: {},

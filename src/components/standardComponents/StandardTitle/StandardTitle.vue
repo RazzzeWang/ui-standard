@@ -5,13 +5,14 @@
 -->
 <template>
   <div class="standard-title-wrap">
-    <i class="title-line" />
+    <i class="title-line" :style="{ backgroundColor: primaryColor }" />
     <div class="zh-text-box">{{ zhText }}</div>
     <div class="en-text-box">{{ enTextUp }}</div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "StandardTitle",
   components: {},
@@ -29,6 +30,9 @@ export default {
     return {};
   },
   computed: {
+    ...mapGetters({
+      primaryColor: "primaryColor",
+    }),
     enTextUp() {
       return this.enText.toUpperCase();
     },
@@ -64,7 +68,6 @@ $padding-top: 70px;
     left: 0;
     width: 60px;
     height: 20px;
-    background-color: $--color-primary;
   }
   .zh-text-box {
     font-weight: 600;

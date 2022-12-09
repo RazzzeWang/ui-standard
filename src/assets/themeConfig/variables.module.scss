@@ -2,5 +2,14 @@
 $--color-primary: #5B69FF;
 
 :export {
-  primaryColor: $--color-primary
+  primaryColor: $--color-primary;
+  primaryColor1: mix(#FFFFFF, $--color-primary, 10%);
+  primaryColor2: mix(#FFFFFF, $--color-primary, 20%);
+  primaryColor3: mix(#FFFFFF, $--color-primary, 30%);
+  primaryColor4: mix(#FFFFFF, $--color-primary, 40%);
+  primaryColor5: mix(#FFFFFF, $--color-primary, 50%);
+  primaryColor6: mix(#FFFFFF, $--color-primary, 60%);
+  primaryColor7: mix(#FFFFFF, $--color-primary, 70%);
+  primaryColor8: mix(#FFFFFF, $--color-primary, 80%);
+  primaryColor9: mix(#FFFFFF, $--color-primary, 90%);
 }

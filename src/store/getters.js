@@ -15,6 +15,7 @@ const getters = {
     }
   },
   userRouters: (state) => state.permission.userRouters,
+  primaryColor: (state) => state.theme.primaryColor,
 };
 
 export default getters;

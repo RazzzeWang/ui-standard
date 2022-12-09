@@ -5,7 +5,7 @@
 -->
 <template>
   <el-container class="frame-wrapper">
-    <el-header class="frame-header">
+    <el-header class="frame-header" :style="{ backgroundColor: primaryColor }">
       <basic-header />
     </el-header>
     <el-container class="frame-container">
@@ -58,6 +58,7 @@ export default {
     ...mapGetters({
       menus: "menus",
       userRouters: "userRouters",
+      primaryColor: "primaryColor",
     }),
   },
   watch: {
@@ -114,7 +115,6 @@ export default {
   width: 100%;
   height: 100%;
   .frame-header {
-    background-color: $--color-primary;
     color: #fff;
   }
   .frame-container {
