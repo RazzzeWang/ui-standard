@@ -134,7 +134,7 @@ export default {
   display: flex;
   .theme-aside {
     height: 100%;
-    min-width: 200px;
+    min-width: 300px;
     overflow-y: hidden;
     margin-right: 24px;
     background-color: #f5f7fa;
