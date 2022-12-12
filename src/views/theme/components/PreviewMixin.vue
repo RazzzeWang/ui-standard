@@ -18,11 +18,13 @@ import { mapMutations } from "vuex";
 export default {
   mixins: [DocStyle],
   mounted() {
-    this.checkLocalThemeConfig();
+    // this.checkLocalThemeConfig();
+    bus.$off(ACTION_APPLY_THEME);
     bus.$on(ACTION_APPLY_THEME, (val) => {
       this.userConfig = val;
       this.onAction();
     });
+    bus.$off(ACTION_DOWNLOAD_THEME);
     bus.$on(ACTION_DOWNLOAD_THEME, (themeConfig, themeName) => {
       this.onDownload(themeConfig, themeName);
     });

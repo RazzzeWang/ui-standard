@@ -26,7 +26,9 @@ import {
   saveUserThemeToLocal,
   loadUserThemeFromLocal,
   loadPreviewFromLocal,
+  savePreviewToLocal,
 } from "./lib/localstorage";
+
 import { ACTION_APPLY_THEME } from "@/constant";
 import { getThemeConfigObject } from "./lib/utils";
 import PreviewMixin from "./components/PreviewMixin";
@@ -89,6 +91,7 @@ export default {
       return name;
     },
     onUserConfigUpdate(userConfig) {
+      console.log(userConfig);
       const themeConfig = JSON.stringify(userConfig);
       const { type, name } = this.previewConfig;
       if (this.isOfficial) {
@@ -113,6 +116,10 @@ export default {
             config.update = Date.now();
             config.theme = themeConfig;
           }
+        });
+        savePreviewToLocal({
+          ...this.previewConfig,
+          theme: themeConfig,
         });
         saveUserThemeToLocal(this.userTheme);
       }

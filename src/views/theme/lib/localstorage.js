@@ -4,6 +4,7 @@
  * @Function: Please Input Function
  */
 import { THEME_PREVIEW_CONFIG, THEME_USER_CONFIG } from "@/constant";
+import defaultThemeConfig from "@/config/defaultThemeConfig";
 
 export const saveToLocal = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value));
@@ -23,7 +24,7 @@ export const savePreviewToLocal = (value) => {
 };
 
 export const loadPreviewFromLocal = () => {
-  return loadFromLocal(THEME_PREVIEW_CONFIG) || {};
+  return loadFromLocal(THEME_PREVIEW_CONFIG);
 };
 
 export const removePreviewFromLocal = () => {

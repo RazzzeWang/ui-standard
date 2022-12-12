@@ -12,10 +12,23 @@
 <script>
 import { mapState } from "vuex";
 import { Loading } from "element-ui";
+import {
+  saveUserThemeToLocal,
+  loadUserThemeFromLocal,
+  savePreviewToLocal,
+  loadPreviewFromLocal,
+} from "@/views/theme/lib/localstorage";
+import defaultThemeConfig from "@/config/defaultThemeConfig";
+import { getThemeConfigObject } from "@/views/theme/lib/utils.js";
+import { ACTION_APPLY_THEME } from "@/constant";
+import bus from "./bus";
+import PreviewMixin from "@/views/theme/components/PreviewMixin";
+
 export default {
   name: "App",
   components: {},
   props: {},
+  mixins: [PreviewMixin], // 主题相关mixin PreviewMixin
   data() {
     return {
       loadingInstance: null,
@@ -43,9 +56,31 @@ export default {
     },
   },
   //生命周期 - 创建完成（可以访问当前this实例）
-  created() {},
+  created() {
+    // --------主题相关 start---------
+    const defaultList = defaultThemeConfig().configsList;
+    const configList = loadUserThemeFromLocal();
+    if (configList && configList[0]) {
+      savePreviewToLocal({
+        ...configList[0],
+        type: "user",
+      });
+    } else {
+      saveUserThemeToLocal(defaultList);
+      savePreviewToLocal(defaultList[0]);
+    }
+    // --------主题相关 end---------
+  },
   //生命周期 - 挂载完成（可以访问DOM元素）
-  mounted() {},
+  mounted() {
+    // --------主题相关 start---------
+    const previewConfig = loadPreviewFromLocal();
+    const themeConfig = getThemeConfigObject(previewConfig.theme);
+    if (themeConfig) {
+      bus.$emit(ACTION_APPLY_THEME, themeConfig);
+    }
+    // --------主题相关 end---------
+  },
   beforeCreate() {}, //生命周期 - 创建之前
   beforeMount() {}, //生命周期 - 挂载之前
   beforeUpdate() {}, //生命周期 - 更新之前

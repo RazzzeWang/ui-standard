@@ -38,11 +38,10 @@ import ActionPanel from "./Action";
 import MainPanel from "./Main";
 import Shortcut from "./Shortcut";
 
-import { themeApi } from "@/api";
-import defaultTheme from "./lib/defaultTheme";
+import defaultTheme from "@/config/defaultTheme";
 import { filterConfigType, filterGlobalValue } from "./lib/utils";
 import vars from "@/assets/themeConfig/variables.module.scss";
-import { mapGetters, mapMutations } from "vuex";
+import defaultThemeConfig from "@/config/defaultThemeConfig";
 
 export default {
   name: "ThemeConfigurator",
@@ -59,8 +58,6 @@ export default {
   },
   data() {
     return {
-      env: "local", // 'local' | 'remote'
-
       init: false, // 是否初始化过
 
       selectOptions: [], // 下拉类别
@@ -111,11 +108,7 @@ export default {
       this.$nextTick(() => {
         let defaultConfig;
 
-        // themeApi.getVars()
-        //   .then((res) => {
-        defaultConfig = this.env === "local" ? defaultTheme() : {};
-        // })
-        // .then(() => {
+        defaultConfig = defaultTheme();
         setTimeout(() => {
           if (defaultConfig) {
             this.defaultConfig = defaultConfig;
@@ -124,7 +117,6 @@ export default {
             this.init = true;
           }
         }, 300); // action after transition
-        // });
       });
     },
     // 设置下拉选项
@@ -169,12 +161,8 @@ export default {
     onReset() {
       this.userConfigRedoHistory = [];
       this.userConfigHistory = [];
-      this.userConfig = {
-        global: {
-          "$--color-primary": vars.primaryColor,
-        },
-        local: {},
-      };
+      const { theme } = defaultThemeConfig().currentTheme;
+      this.userConfig = JSON.parse(theme);
       this.onAction();
     },
     // 用户配置切换
@@ -191,7 +179,6 @@ export default {
 
     // 操作记录
     onAction() {
-      console.log(this.defaultConfig);
       this.onUserConfigUpdate(this.userConfig);
       bus.$emit(ACTION_APPLY_THEME, this.userConfig);
     },

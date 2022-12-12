@@ -1,5 +1,14 @@
 /* 改变主题色变量 */
 $--color-primary: #5B69FF;
+$--color-white: #ffffff;
+/// color|1|Functional Color|1
+$--color-success: #67C23A !default;
+/// color|1|Functional Color|1
+$--color-warning: #E6A23C !default;
+/// color|1|Functional Color|1
+$--color-danger: #F56C6C !default;
+/// color|1|Functional Color|1
+$--color-info: #909399 !default;
 
 :export {
   primaryColor: $--color-primary;
@@ -12,4 +21,13 @@ $--color-primary: #5B69FF;
   primaryColor7: mix(#FFFFFF, $--color-primary, 70%);
   primaryColor8: mix(#FFFFFF, $--color-primary, 80%);
   primaryColor9: mix(#FFFFFF, $--color-primary, 90%);
+  success-light: mix($--color-white, $--color-success, 80%);
+  warning-light: mix($--color-white, $--color-warning, 80%);
+  danger-light: mix($--color-white, $--color-danger, 80%);
+  info-light: mix($--color-white, $--color-info, 80%);
+
+  success-lighter: mix($--color-white, $--color-success, 90%);
+  warning-lighter: mix($--color-white, $--color-warning, 90%);
+  danger-lighter: mix($--color-white, $--color-danger, 90%);
+  info-lighter: mix($--color-white, $--color-info, 90%);
 }

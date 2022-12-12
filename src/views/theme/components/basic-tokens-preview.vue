@@ -232,7 +232,9 @@ const original = {
 
 export default {
   created() {
+    bus.$off(ACTION_USER_CONFIG_UPDATE);
     bus.$on(ACTION_USER_CONFIG_UPDATE, this.setGlobal);
+    bus.$off(ACTION_COMPONECT_SELECT);
     bus.$on(ACTION_COMPONECT_SELECT, (val) => {
       this.$nextTick(() => {
         const getSelectElement = Array.from(
